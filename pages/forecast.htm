@@ -1,0 +1,32 @@
+<h4>Forecast for {{ cityUpperCase(city) }}</h4>
+
+<hr />
+
+<div ng-repeat="w in weatherResult.list">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{ convertToDate(w.dt) | date }}</h3>
+                </div>
+                <div class="panel-body" ng-repeat="o in w.weather">
+                    Daytime temperature: {{ convertToFahrenheit(w.temp.day) }}
+                    <br>
+                    Condition : {{ o.description }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-2">
+        Days
+        <div class="form-group">
+            <input type="text" class="form-control" ng-model="days" />
+        </div>
+        <a href="#/forecast/{{ days }}" class="btn btn-primary">Update</a>
+    </div>
+</div>
